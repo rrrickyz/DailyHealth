@@ -3,7 +3,7 @@ from flask import render_template, request
 import users
 
 #the defualt page
-@app.route("/")
+@app.route("/", methods=["GET"])
 def index():
   return render_template("index.html")
 
@@ -24,7 +24,7 @@ def register():
   password1 = request.form["password1"]
   password2 = request.form["password2"]
   if password1 != password2:
-    return render_template("error.html", message = "The passwords mistach.")
+    return render_template("e∏rror.html", message = "The passwords mistach.")
   if users.register(username, password1):
     return redirect("/login")
   else:
