@@ -36,11 +36,11 @@ def new_exes(exe_name,length,cal,date):
   id_sql = "SELECT exe_id from exes WHERE exe_name=:exe_name"
   id = db.session.execute(id_sql,{"exe_name":exe_name}).fetchone()
   cal_sql = "SELECT calories from exes WHERE exe_name=:exe_name"
-  cal = db.session.execute(cal_sql,{"exe_name"}:exe_name).fetchone()
+  cal = db.session.execute(cal_sql,{"exe_name":exe_name}).fetchone()
   id = id_fetch.fetchone()[0]
   cal = cal_fetch.fetchone()[0]
   result = db.session.execute("INSET INTO user_exes VALUES (:id,:exe_name,:length,:cal*:length,:date)",
-                              "id":id,"exe_name":exe_name,"length":length,"cal":cal,"date":date)
+                              {"id":id,"exe_name":exe_name,"length":length,"cal":cal,"date":date})
   db.session.commit()
 
 #for users adding new diet record
@@ -48,5 +48,6 @@ def new_diets():
     #to be continued
     #the calories of diets are ideally calculated based on
     #what ingredients and how much
+    pass
 
 
